@@ -1,6 +1,5 @@
 require './secret/coin.rb'
 require './secret/measure.rb'
-require './secret/one_solution.rb'
 
 class TestStrategy
   attr_reader :strategy
@@ -50,10 +49,10 @@ class TestStrategy
   #   i.e. {correct: 10, incorrect: 4, too_many_measures_error: 3, other_error: 5}
   def check_all_results
     (0..11).inject([]) do |results, i|
+      Measure.reset_number_of_measures
       results << check_result(i, :lighter)
       Measure.reset_number_of_measures
       results << check_result(i, :heavier)
-      Measure.reset_number_of_measures
       results
     end.group_by(&:to_sym).map{|k, v| [k, v.count]}.to_h
   end

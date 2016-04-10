@@ -1,13 +1,6 @@
+require './secret/solutions/solution_base'
+
 # Good luck understanding this
-
-class OneSolution
-  attr_reader :coins
-
-  # @param coins [Array<Coin>] of size 12
-  def initialize(coins)
-    raise 'You need 12 coins at least and 12 coins only' unless coins.count == 12
-    @coins = coins
-  end
 
   ######################################
   #  path   chosen? opposite coin_number
@@ -46,10 +39,10 @@ class OneSolution
   #   - 3rd measure: [C3 C4 C6 C8] ____ [C0 C5 C9 C11]
   ######################################
   #
+
+class OneSolution < SolutionBase
+
   # @return [Hash] {coin_index: [Integer], fake_coin_is: [:heavier or :lighter]}
-  # examples of valid outputs:
-  #   - {coin_index: 0, fake_coin_is: :heavier}
-  #   - {coin_index: 5, fake_coin_is: :lighter}
   def perform
     coin_index, heavier_or_lighter = case shortcut_3_measure_results
                                        when 'LLR'

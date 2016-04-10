@@ -1,6 +1,8 @@
+require './secret/solutions/solution_base'
+
 # Welcome to the game:
 #
-# You are given 12 coins, 1 one which are fake, but you don't know if the fake coin is heavier or lighter.
+# You are given 12 coins, 1 one which is fake, but you don't know if the fake coin is heavier or lighter.
 # You are also given a regular balance with two plates.
 #
 # The game is simple: Elaborate a strategy to determine which one of the 12 coins is fake,
@@ -26,14 +28,10 @@
 # Have fun.
 #
 #
-class MyStrategy
-  attr_reader :coins
+class MyStrategy < SolutionBase
 
-  # @param coins [Array<Coin>] of size 12
-  def initialize(coins)
-    raise 'You need 12 coins at least and 12 coins only' unless coins.count == 12
-    @coins = coins
-  end
+  # You have access to the `coins` attribute. It returns an array of 12 Coins you can use to make measures.
+  # Check out `SolutionBase` if you're curious.
 
   # @return [Hash] {coin_index: [Integer], fake_coin_is: [:heavier or :lighter]}
   # examples of valid outputs:
