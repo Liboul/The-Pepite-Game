@@ -1,4 +1,8 @@
 class Measure
+  def self.result(left_side_coins, right_side_coins)
+    new(left_side_coins, right_side_coins).measure
+  end
+
   attr_reader :left_side_coins, :right_side_coins
 
   # @param left_side_coins [Array<Coin>]
